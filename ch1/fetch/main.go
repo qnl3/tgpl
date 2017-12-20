@@ -20,9 +20,11 @@ func main() {
 			fmt.Fprintf(os.Stderr, "fetch: %v\n", err)
 		}
 
+		fmt.Printf("{\"Status\":\"%s\",\"body\":", resp.Status)
 		if _, err := io.Copy(os.Stdout, resp.Body); err != nil {
 			log.Fatal(err)
 		}
+		fmt.Print("}")
 
 	}
 }
